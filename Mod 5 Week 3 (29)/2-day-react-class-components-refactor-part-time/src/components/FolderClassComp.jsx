@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React from 'react';
 
 const Headers = ({ titles, currentTab, selectTab }) => {
   const handleClick = (e) => {
@@ -28,30 +28,38 @@ const Headers = ({ titles, currentTab, selectTab }) => {
   );
 }
 
-const Folder = ({folders}) => {
-  const [currentTab, setCurrentTab] = useState(0);
+class FolderClassComp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentTab: 0
+    };
+  }
 
-  const selectTab = (num) => setCurrentTab(num);
+  selectTab = (num) => {
+    this.setState({ currentTab: num });
+  }
 
-  const currFolder = folders[currentTab];
-  const titles = folders.map((folder) => folder.title);
+  render() {
+    const folder = this.props.folders[this.state.currentTab];
+    const titles = this.props.folders.map((folder) => folder.title);
 
-  return (
-    <section className="tabs-section">
+    return (
+      <section className="tabs-section">
         <h1>Tabs</h1>
         <div className='tabs'>
           <Headers
             titles={titles}
-            currentTab={currentTab}
-            selectTab={selectTab}
+            currentTab={this.state.currentTab}
+            selectTab={this.selectTab}
           />
           <div className='tab-content'>
-            {currFolder.content}
+            {folder.content}
           </div>
         </div>
       </section>
-  )
-
+    );
+  }
 }
 
-export default Folder;
+export default FolderClassComp;
