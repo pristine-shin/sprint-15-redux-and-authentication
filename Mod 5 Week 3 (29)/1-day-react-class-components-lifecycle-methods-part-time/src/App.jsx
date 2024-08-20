@@ -2,6 +2,8 @@ import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import FunctionTitan from './components/functionComponents/FunctionTitan';
 import FunctionKuiper from './components/functionComponents/FunctionKuiper';
+import ClassTitan from './components/classComponents/ClassTitan';
+import Kuiper from './components/classComponents/ClassKuiper';
 
 function Layout() {
   return (
@@ -13,7 +15,7 @@ function Layout() {
 }
 
 const router = createBrowserRouter([
-  { 
+  {
     element: <Layout />,
     children: [
       {
@@ -25,11 +27,11 @@ const router = createBrowserRouter([
       },
       {
         path: 'titan',
-        element: <FunctionTitan />
+        element: <ClassTitan />
       },
       {
         path: 'kuiper',
-        element: <FunctionKuiper />
+        element: <Kuiper />
       }
     ]
   }

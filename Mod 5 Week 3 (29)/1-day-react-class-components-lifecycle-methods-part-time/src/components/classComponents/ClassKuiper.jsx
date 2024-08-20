@@ -12,7 +12,14 @@ class Kuiper extends Component {
     };
   }
 
-  // Your code here 
+  // Your code here
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.guessCount > 4) {
+      this.updateState(0, kuiperSleep);
+      alert(`Sorry you have used your 5 guesses! You lose! Start again!`);
+    }
+  }
+
   updateState = (count, kuiper) => {
     this.setState({
       kuiper,
