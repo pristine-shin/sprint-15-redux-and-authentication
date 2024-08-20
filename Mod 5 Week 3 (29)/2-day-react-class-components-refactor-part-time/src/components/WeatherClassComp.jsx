@@ -1,19 +1,23 @@
 import React from 'react';
 import { toQueryString } from '../utils';
-import { useState, useEffect } from 'react';
 
-const Weather = () => {
-  const [weather, setWeather] = useState(null);
+class WeatherClassComp extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        weather: null
+      };
+    }
 
-    useEffect(() => {
+    componentDidMount() {
       navigator.geolocation?.getCurrentPosition(
-        pollWeather,
+        this.pollWeather,
         (err) => console.log(err),
         { timeout: 10000 }
       );
-    }, [])
+    }
 
-    const pollWeather = async (location) => {
+    pollWeather = async (location) => {
       let url = 'http://api.openweathermap.org/data/2.5/weather?';
 
       /* Remember that it's unsafe to expose your API key. (Note that pushing
@@ -25,7 +29,7 @@ const Weather = () => {
       "process.env.<variable_name>". Make sure to .gitignore your .env file!
       Also remember to restart your server (i.e., re-run "npm run dev") whenever
       you change your .env file. */
-      const apiKey = import.meta.env.VITE_WEATHER_API;
+      const apiKey = '???';
 
       const params = {
         lat: location.coords.latitude,
@@ -38,21 +42,22 @@ const Weather = () => {
       const res = await fetch(url);
       if (res.ok) {
         const weather = await res.json();
-        setWeather(weather);
+        this.setState({ weather });
       }
       else {
         alert ("Check Weather API key!")
       }
     }
 
-    const currWeather = weather;
+  render() {
+    const weather = this.state.weather;
     let content = <div className='loading'>loading weather...</div>;
 
-    if (currWeather) {
-      const temp = (currWeather.main.temp - 273.15) * 1.8 + 32;
+    if (weather) {
+      const temp = (weather.main.temp - 273.15) * 1.8 + 32;
       content = (
         <div>
-          <p>{currWeather.name}</p>
+          <p>{weather.name}</p>
           <p>{temp.toFixed(1)} degrees</p>
         </div>
       );
@@ -73,7 +78,7 @@ const Weather = () => {
         </div>
       </section>
     );
-
+  }
 }
 
-export default Weather;
+export default WeatherClassComp;
