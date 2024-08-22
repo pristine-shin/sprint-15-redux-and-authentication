@@ -1,17 +1,23 @@
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-
+import { loadArticles } from '../../store/articleReducer';
 import './SingleArticle.css';
 
 const SingleArticle = () => {
-
-  let { id } = useParams();
-
+  const dispatch = useDispatch();
+  const { id } = useParams();
   const articles = useSelector(state=>state.articleState.entries);
-
   const selectedArticle = articles.find(article => article.id === id)
 
-  // console.log(selectedArticle.id)
+  useEffect(() => {
+    dispatch(loadArticles());
+  }, [dispatch]);
+
+  if (!selectedArticle) {
+    return <h1>Loading...</h1>
+  }
+
   return (
     <div className='singleArticle'>
       <h1>{`${selectedArticle.title}`}</h1>
@@ -20,10 +26,12 @@ const SingleArticle = () => {
         alt='home'
       />
       <p>
-        {`${selectedArticle.imageUrl}`}
+      {`${selectedArticle.body}`}
       </p>
     </div>
   );
 };
+
+
 
 export default SingleArticle;
