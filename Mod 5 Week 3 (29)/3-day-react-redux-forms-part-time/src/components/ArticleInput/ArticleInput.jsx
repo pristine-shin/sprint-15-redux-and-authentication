@@ -98,6 +98,7 @@ const ArticleInput = () => {
       imageUrl
     }
 
+
     dispatch(addArticle(newArticle))
 
     reset();
