@@ -1,3 +1,4 @@
+import { act } from 'react';
 import articles from '../data/data.json';
 
 const LOAD_ARTICLES = 'article/loadArticles';
@@ -24,9 +25,10 @@ const articleReducer = (state = initialState, action) => {
     case LOAD_ARTICLES:
       return { ...state, entries: [...action.articles] };
     case ADD_ARTICLE:
-      const newState = {...state}; // shallow copy
-      newState.entries = [...newState.entries, action.article]; //adds article and makes a new array shallow copied
-      return newState
+      // const newState = {...state}; // shallow copy
+      // newState.entries = [...newState.entries, action.article]; //adds article and makes a new array shallow copied
+      // return newState
+      return {...state, entries: [...state.entries, action.article]}
     default:
       return state;
   }
