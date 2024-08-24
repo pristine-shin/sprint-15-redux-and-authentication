@@ -1,7 +1,6 @@
-
 const ADD_TO_CART = 'cart/addToCart';
 
-const addToCart = (produceId) => ({
+export const addToCart = (produceId) => ({
   type: ADD_TO_CART,
   produceId
 })
