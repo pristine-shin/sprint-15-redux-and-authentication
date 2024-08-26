@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { populateProduce } from './store/produce';
+// import { addToCart } from './store/cart';
 import Cart from './components/Cart';
 import ProduceList from './components/ProduceList';
 import { useEffect } from 'react';
@@ -12,6 +13,10 @@ function App() {
   useEffect(() => {
     dispatch(populateProduce());
   },[dispatch])
+
+  // useEffect(() => {
+  //   dispatch(addToCart());
+  // },[dispatch])
 
   return (
     <>
