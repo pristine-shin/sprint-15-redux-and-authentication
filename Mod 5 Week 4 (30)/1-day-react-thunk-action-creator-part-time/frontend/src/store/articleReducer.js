@@ -1,4 +1,4 @@
-import articles from '../data/data.json';
+// import articles from '../data/data.json';
 
 const LOAD_ARTICLES = 'article/loadArticles';
 const ADD_ARTICLE = 'article/addArticle';
