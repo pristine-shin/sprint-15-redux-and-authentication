@@ -17,7 +17,11 @@ function ProduceDetails({ produce }) {
         <button
           className={"plus-button" + (cartItem ? " selected" : "")}
           onClick={() => {
-              dispatch(addToCart(produce.id))
+              if (cartItem) {
+                dispatch(updateCart(cartItem.id, cartItem.count + 1))
+              } else {
+                dispatch(addToCart(produce.id))
+              }
           }}
         >
           <i className="fas fa-plus" />
