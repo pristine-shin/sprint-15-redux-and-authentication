@@ -25,6 +25,7 @@
     "helmet": "^4.6.0",
     "morgan": "^1.10.0",
     "per-env": "^1.0.2",
+    "redux-thunk": "^3.1.0",
     "sequelize": "^5.22.4",
     "sequelize-cli": "^5.5.1"
   },
