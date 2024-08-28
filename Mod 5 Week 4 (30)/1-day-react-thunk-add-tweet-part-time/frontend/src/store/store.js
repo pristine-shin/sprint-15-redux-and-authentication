@@ -8,6 +8,7 @@ const rootReducer = combineReducers({
 
 
 let enhancer;
+
 if (import.meta.env.MODE !== "production") {
   const logger = (await import("redux-logger")).default;
   const composeEnhancers =

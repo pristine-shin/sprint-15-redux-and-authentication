@@ -17,9 +17,14 @@ router.get(
 router.post(
   '/',
   asyncHandler(async (req, res) => {
-    const { tweetContent } = req.body;
+    const { tweetMessage } = req.body;
 
-    const tweet = await Tweet.create({ tweetContent })
+    const tweet = await Tweet.create({
+      tweetMessage,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    })
+    
     res.status(201);
     return res.json(tweet);
   })
