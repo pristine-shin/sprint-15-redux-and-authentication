@@ -14,4 +14,12 @@ router.get(
   })
 );
 
+router.post(
+  '/',
+  asyncHandler(async (req, res) => {
+    const tweets = await Tweet.findAll();
+    res.json(tweets);
+  })
+)
+
 module.exports = router;
