@@ -7,6 +7,7 @@ import configureStore from './store';
 import { loadArticles } from './store/articleReducer';
 
 const store = configureStore();
+
 if (import.meta.env.MODE !== 'production') {
   window.store = store;
   window.loadArticles = loadArticles;

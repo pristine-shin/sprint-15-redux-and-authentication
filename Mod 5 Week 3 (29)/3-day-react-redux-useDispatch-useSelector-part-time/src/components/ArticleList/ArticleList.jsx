@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadArticles } from '../../store/articleReducer'
 
@@ -18,7 +18,7 @@ const ArticleList = () => {
     <div>
       <h1>Article List</h1>
       <ol>
-        {articles.map(({id, title}) => (
+        {articles && articles.map(({id, title}) => ( //articles && is a conditional, checks if it is available/rendered before trying to map
           <li key={id}>
             <NavLink to={`${id}`}>{title}</NavLink>
           </li>

@@ -2,7 +2,9 @@ import articles from '../data/data.json'
 
 const LOAD_ARTICLES = 'article/loadArticles';
 
+// this function is dispatched which invokes our reducer
 export const loadArticles = () => {
+  //below is the action sent to the reducer
   return {
     type: LOAD_ARTICLES,
     articles
