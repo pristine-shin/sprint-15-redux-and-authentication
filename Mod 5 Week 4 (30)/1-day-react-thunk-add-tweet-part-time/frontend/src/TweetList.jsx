@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllTweets } from './store/tweet';
+import CreateTweet from './CreateTweet';
 
 const TweetList = () => {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ const TweetList = () => {
       {tweetList?.map(({ id, message }) => (
         <p key={id}>{message}</p>
       ))}
+      <CreateTweet />
     </>
   );
 };
